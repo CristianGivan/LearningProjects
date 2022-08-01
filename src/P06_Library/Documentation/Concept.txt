@@ -1,0 +1,47 @@
+- doar bibliotecarul poate sa adauge carti (implementeze cerintele bibliotecarului) nu si studentul
+- pot sa fie mai multe biblioteci
+- un bibliotecar lucreaza la o singura librarie pe viitor pot fi mai multe
+- un student fregventeaza odar o singura biblioteca pe viitor pot fi mai multe
+430
+250
+
+ToDo general
+- sa tratez exceptiile
+- as putea sa impart clasa book in 2 in book tot ce tine de carte nume autor isbn si bookRecord numar de copii si
+    numar de carti imprumutate lista de persoane imprumutate
+- ar fi fain sa avem o lista de utilizatori
+- sa am o confirmare ca s-a facut comada add delete...
+
+
+ToDO Meniu
+High:
++ Cand dau 0 imi apar prostii
+
+Low:
++Ar trebui sa fac meniu care sa fie menu si developerMenu care extinde meniu
++ peste tot ar trebui sa am si obtiunea help pentru a afisa mai multe detalii despre obtiunile meniului
+
+Done:
+- Sa imi apara un meniu in care aleg sa ma logez sau sa ma inregistrez
+- Dupa ce am ales ce vreu sa fac sa imi apara un meniu in care sa ma salute si sa imi arata
+    obtiunile in functie de ce am selectat
+- Sa pot sa imi aleg o obtiune si sa ma intrebe daca chiar doresc sa fac acea operatie
+
+
+
+Neclaritati:
+High:
+- cum imi impart book in doua
+- commiturile cu err la err console are legatura cu closeconnection?
+
+Low:
+-A trebuit sa folosesc sub clasele lirarian si stundet in loc sa foloses user pentru ca am
+am definit student si librarrian pentru ca ...
+
+Done:
+- tratarea exceptiilor
+
+
+Concluzii
+- a fost foarte greu dupa ce am terminat aplicati cu o clasa Book sa impart aceasta aplicatie in 2
+

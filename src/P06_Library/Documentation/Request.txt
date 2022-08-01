@@ -1,0 +1,78 @@
+
+Enunt non-tehnic:
+Clientul tau este o biblioteca care are nevoie de un sistem de gestiune.
+Exista doua tipuri de utilizatori: admin(sau bibliotecar) si client (adica cel care imprumuta carti)
+Ca si admin, am nevoie sa:
+Adaug o noua carte in sistem (adica in biblioteca)
+    Sa sterg o noua carte din sistem cu totul
+    Sa sterg o copie a unei carti din sistem
+    Sa vad detaliile tututor cartilor din sistem
+    Sa caut o carte in sistem dupa codul ISBN si sa ii vad detaliile (inclusiv cate copii exista in total si cate sunt imprumutate)
+    Sa vad toate cartile imprumutate de un anumit client
+Ca si client, am nevoie sa:
+    Vad o lista cu toate cartile disponibile pentru imprumut
+    Caut o carte in biblioteca si sa vad daca este disponibila
+    Imprumut o carte
+    Returnez o carte
+
+O carte din biblioteca are titlu, autor, cod ISBN. In plus, mai trebuie sa stim pentru fiecare carte cate copii exista in total si cate sunt imprumutate.
+Iar utilizatorii au doar nume.
+
+
+
+
+
+Enuntul tehnic:
+
+
+Creeaza clasa Book
+Atribute
+Title
+Author
+ISBNCode
+totalNumberOfCopies
+borrowedNumberOfCopies
+Metode
+Doar getteri si setteri
+Creeaza clasa Library
+Atribute
+booksList - o lista cu cartile din biblioteca
+Creeaza clasa User, care va reprezenta un utilizator al aplicatiei de gestiune
+Atribute
+Nume
+Creeaza clasa Client, care extinde User
+Atribute
+borrowedBooksCodes - lista ISBNCode-urilor cartilor imprumutate de client
+Metode
+isBookAvailable()
+Va cauta o carte in biblioteca dupa ISBNCode si va afisa daca este sau nu disponibila pentru imprumut
+viewAvailableBooks()
+va afisa in consola toate cartile disponibile din biblioteca (adica cartile care au borrowedNumberOfBooks mai mic de cat totalNumberOfBooks)
+borrowBook()
+va imprumuta o carte din biblioteca dupa ISBNCode, ceea ceva avea doua efecte:
+Codul cartii imprumutate va fi adaugat in lista de coduri a clientului
+In acelasi timp, cartii cu acelasi ISBNCode din lista de carti din librarie ii va fi incrementat atributul borrowedNumberOfCopies cu 1.
+Atentie! Operatia de imprumutare nu va fi posibila pentru o carte daca borrowedNumberOfCopies este egal cu totalNumberOfCopies
+returnBook()
+va returna o carte in biblioteca dupa ISBNCode, ceea ce va avea doua efecte:
+Codul ISBNCode va disparea din lista de coduri ale clientului.
+In acelasi timp, cartii cu acel ISBNCode din lista de carti a bibliotecii ii va fi decrementat atributul borrowedNumberOfCopies cu 1.
+Atentie: toate metodele vor trebui sa primeasca ca parametru in plus o biblioteca
+Creeaza clasa Admin, care extinde User
+Atribute
+Metode
+addBook()
+va adauga o carte in lista de carti a bilbiotecii. Daca cartea cu acel ISBNCode exista deja in lista de carti a bibliotecii, atunci doar i se va incrementa valoarea atributului numberOfCopies
+deleteBook()
+Va fi o metoda supraincarcata
+Prima varianta va primi doar un paramentru, ISBNCode si va sterge de tot cartea din lista de carti a bibliotecii
+A doua varianta va primi doi paremetrii: ISBNCode si numarul de copii care se vor sterge. In acest caz, cartea nu va fi stearsa din lista de carti a bibliotecii, ci doar se va scadea din numarul total de copii al cartii, numarul de copii primit ca parametru
+listAllBooks()
+va printa detaliile fiecarei carti din lista de carti a bibliotecii
+listBookDetails()
+Va printa detaliile unei singure carti din biblioteca, in functie de codul ISBNCode
+viewBorrowedBooks()
+Va lista codurile ISBNCode ale cartilor imprumutate de un client, in functie de numele clientului primi ca parametru
+Atentie: toate metodele vor trebui sa primeasca ca parametru in plus o biblioteca
+
+
