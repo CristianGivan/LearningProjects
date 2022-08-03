@@ -31,7 +31,7 @@ Done:
 
 Neclaritati:
 High:
-- cum imi impart book in doua
+- Cum ar fi mai bine sa verific ca toate campurie sunt introduse bine in main(unde am consola) sau ar trebui sa le verifi in constructori sau seteri.
 - commiturile cu err la err console are legatura cu closeconnection?
 
 Low:
@@ -40,6 +40,7 @@ am definit student si librarrian pentru ca ...
 
 Done:
 - tratarea exceptiilor
+- cum imi impart book in doua -R mai bine adaug o clasa record in clasa book
 
 
 Concluzii
