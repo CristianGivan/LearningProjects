@@ -4,7 +4,7 @@ import P06_Library.Exceptions.BookNoInsertedCorrect;
 import P06_Library.Exceptions.NoMoreSpaceToAddBooks;
 
 import java.util.Scanner;
-// dsadsa
+// d
 
 public class Main {
     public static void main(String[] args) {
