@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
-        int selectedInMenu;
+        int choice;
 
         final int MAXIM_BOOKS_IN_LIBRARY = 10;
         Book[] books = new Book[MAXIM_BOOKS_IN_LIBRARY];
@@ -19,14 +19,13 @@ public class Main {
         Librarian librarian = new Librarian("Librarian1", library);
         Student student = new Student("Student1", library);
         Menu menu = new Menu();
-/*
 
         do {
             displayMenu(menu.getTypeIn(), menu.getLogIn());
             System.out.println("\nYour chose is:");
              choice = numberTypedByUser(console);
 
-            switch (selectedInMenu) {
+            switch (choice) {
                 case 0:
                     System.out.println("You chose to exit, bye for now!");
                     break;
@@ -50,11 +49,10 @@ public class Main {
             }
 
 
-        } while (selectedInMenu != 0);
-*/
+        } while (choice != 0);
 
         debugApp(librarian, student);
-        actionByLibrarian(librarian, student, menu, console);
+        //actionByLibrarian(librarian, student, menu, console);
         //actionsByStudent(student, menu, console);
     }
 
@@ -63,23 +61,28 @@ public class Main {
         return console.nextLine();
     }
 
-    public static int numberTypedByUser(Scanner console1) {
+       public static int numberTypedByUser(Scanner console1) {
         Scanner console = new Scanner(System.in);
-        int numberOfTryes = 2;
-        int numberTyped = 1;
-        try {
-            numberTyped = console.nextInt();
-            return numberTyped;
-        } catch (InputMismatchException e) {
-
-            while (numberOfTryes != 0) {
-                System.out.println("You didn't typed a number, you have " + numberOfTryes + " to type the desired number");
-                numberTypedByUser(console);
-                numberOfTryes--;
+        int numberTyped = -1;
+        int numberOfTries = 3;
+      do {
+            try {
+                numberTyped = Integer.parseInt(console.nextLine());
+                numberOfTries = 0;
+            } catch (InputMismatchException e) {
+                numberOfTries--;
+            }catch (NumberFormatException e){
+                numberOfTries--;
             }
-        }
+            if (numberOfTries==0){
+                System.out.println("You tried to many time, bye");
+            }else {
+                System.out.println("You didn't typed a number, you have " + numberOfTries + " to type the desired number");
+            }
+        }  while (numberOfTries != 0);
         return numberTyped;
     }
+/* a fost prima incercare una destul de proasta
 
     //todo a better way to try 3 times or to try at infinite to insert
     public static void tryAgainToInsertBook(Librarian librarian, Book newBook, Scanner console) {
@@ -87,7 +90,7 @@ public class Main {
         System.out.println("What do you want to do? You can: \n");
         System.out.println("Type 0 to exit");
         System.out.println("Type 1 to insert again the book\n");
-        int maxNumberOfTries=3;
+        int maxNumberOfTries = 3;
 
         choice = numberTypedByUser(console);
 
@@ -138,6 +141,7 @@ public class Main {
                 break;
         }
     }
+*/
 
     public static void displayMenu(String[] typeIn, String[] menu) {
         System.out.println("Select from 0 to " + (menu.length - 1) + " from the to options: \n");
@@ -182,6 +186,9 @@ public class Main {
 
             switch (choice) {
                 case 1:
+
+                    /*
+                    //asa am gandit eu prima data
                     System.out.println("You chose to " + menu.getLibrarianMenu()[1] + "\n");
                     //Book newBook = new Book(console);
                     Book newBook = new Book("", "Author1", "B109", 3, 0);
@@ -197,6 +204,29 @@ public class Main {
                         //bookNoInsertedCorrect.printStackTrace();
                         tryAgainToInsertBook(librarian, newBook, console);
 
+                    }
+                    break;*/
+                    int repeat = 3;
+                    System.out.println("You chose to " + menu.getLibrarianMenu()[1] + "\n");
+                    while (repeat != 0) {
+
+                        Book newBook = new Book(console);
+                        //Book newBook = new Book("", "Author1", "B109", 3, 0)
+                        try {
+                            librarian.addBook(newBook);
+                            System.out.println(newBook.toString());
+                            System.out.println("The book was inserted.");
+                            repeat = 0;
+                        } catch (NoMoreSpaceToAddBooks noMoreSpaceToAddBooks) {
+                            System.out.println(noMoreSpaceToAddBooks.getMessage());
+                            noMoreSpaceToAddBooks.printStackTrace();
+                        } catch (BookNoInsertedCorrect bookNoInsertedCorrect) {
+                            System.out.println(bookNoInsertedCorrect.getMessage());
+                            //bookNoInsertedCorrect.printStackTrace();
+                            //tryAgainToInsertBook(librarian, newBook, console);
+                            repeat--;
+                            System.out.println("Please try again you have, " + repeat + " more tries available\n");
+                        }
                     }
                     break;
                 case 2:

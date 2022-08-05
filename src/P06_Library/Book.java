@@ -19,7 +19,8 @@ public class Book {
         this.numberOfBooksBorrowed = numberOfBooksBorrowed;
     }
 
-    public Book(Scanner console) {
+    public Book(Scanner console1) {
+        Scanner console = new Scanner(System.in);
         System.out.println("Insert the name of the book: ");
         this.name = console.nextLine();
         System.out.println("Insert the author of the book: ");
@@ -27,7 +28,7 @@ public class Book {
         System.out.println("Insert the ISBN of the book: ");
         this.isbn = console.nextLine();
         System.out.println("Insert the number of copies for the book: ");
-        this.numberOfCopies = console.nextInt();
+        this.numberOfCopies = Integer.parseInt(console.nextLine());
         this.numberOfBooksBorrowed = 0;
     }
 

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d890d094-1bb8-4ea5-88f6-5f159b141a50" name="Changes" comment="Test added">
+    <list default="true" id="d890d094-1bb8-4ea5-88f6-5f159b141a50" name="Changes" comment="Erroare la numberTypedByUser daca dau o litera imi merge dar prost">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P06_Library/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_Library/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/P06_Library/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_Library/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659704766515</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Erroare la numberTypedByUser daca dau o litera imi merge dar prost">
+      <created>1659724087546</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1659724087546</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,15 +149,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Algorithms added" />
     <MESSAGE value="Test added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test added" />
+    <MESSAGE value="Erroare la numberTypedByUser daca dau o litera imi merge dar prost" />
+    <option name="LAST_COMMIT_MESSAGE" value="Erroare la numberTypedByUser daca dau o litera imi merge dar prost" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/P06_Library/Main.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="11" />
+          <line>275</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
