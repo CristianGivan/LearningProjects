@@ -12,7 +12,7 @@ public class Main {
         Scanner console = new Scanner(System.in);
         int selectedInMenu;
 
-        final int MAXIM_BOOKS_IN_LIBRARY = 7;
+        final int MAXIM_BOOKS_IN_LIBRARY = 10;
         Book[] books = new Book[MAXIM_BOOKS_IN_LIBRARY];
         books = initializeLibrary(books);
         Library library = new Library(books);
@@ -24,7 +24,7 @@ public class Main {
         do {
             displayMenu(menu.getTypeIn(), menu.getLogIn());
             System.out.println("\nYour chose is:");
-            selectedInMenu = Integer.parseInt(typedByUser(console));
+             choice = numberTypedByUser(console);
 
             switch (selectedInMenu) {
                 case 0:
@@ -65,11 +65,18 @@ public class Main {
 
     public static int numberTypedByUser(Scanner console1) {
         Scanner console = new Scanner(System.in);
-        int numberTyped=0;
+        int numberOfTryes = 2;
+        int numberTyped = 1;
         try {
-            numberTyped=console.nextInt();
-        }catch (InputMismatchException e){
-            System.out.println("You didn't typed a number");
+            numberTyped = console.nextInt();
+            return numberTyped;
+        } catch (InputMismatchException e) {
+
+            while (numberOfTryes != 0) {
+                System.out.println("You didn't typed a number, you have " + numberOfTryes + " to type the desired number");
+                numberTypedByUser(console);
+                numberOfTryes--;
+            }
         }
         return numberTyped;
     }
@@ -80,16 +87,18 @@ public class Main {
         System.out.println("What do you want to do? You can: \n");
         System.out.println("Type 0 to exit");
         System.out.println("Type 1 to insert again the book\n");
+        int maxNumberOfTries=3;
+
         choice = numberTypedByUser(console);
 
         switch (choice) {
             case 0:
                 break;
             case 1:
-                newBook = new Book("Book1", "", "B109", 3, 0);
+                //newBook = new Book("Book1", "", "B109", 3, 0);
                 //newBook = new Book(console);
                 try {
-                    librarian.addBook(newBook);
+                    librarian.addBook(newBookByUser(librarian));
                     System.out.println("The book was inserted.");
                 } catch (NoMoreSpaceToAddBooks e) {
                     throw new RuntimeException(e);
@@ -104,10 +113,10 @@ public class Main {
                         case 0:
                             break;
                         case 1:
-                            newBook = new Book("Book99", "Author1", "B109", 3, 0);
+                            //newBook = new Book("Book99", "Author1", "B109", 3, 0);
                             //newBook = new Book(console);
                             try {
-                                librarian.addBook(newBook);
+                                librarian.addBook(newBookByUser(librarian));
                                 System.out.println("The book was inserted.");
                             } catch (NoMoreSpaceToAddBooks ex) {
                                 throw new RuntimeException(ex);
@@ -304,6 +313,26 @@ public class Main {
                 redoAction = false;
             }
         } while (choice != 0);
+    }
+
+
+    public static Book newBookByUser(Librarian librarian) throws NoMoreSpaceToAddBooks, BookNoInsertedCorrect {
+        String bookName;
+        String bookAuthor;
+        String bookISBN;
+        int bookNumberOfCopies;
+        Scanner console = new Scanner(System.in);
+        System.out.println("Insert the name of the book: ");
+        bookName = (console.nextLine());
+        System.out.println("Insert the author of the book: ");
+        bookAuthor = (console.nextLine());
+        System.out.println("Insert the ISBN of the book: ");
+        bookISBN = (console.nextLine());
+        System.out.println("Insert the number of copies for the book: ");
+        bookNumberOfCopies = (console.nextInt());
+        Book newBook = new Book(bookName, bookAuthor, bookISBN, bookNumberOfCopies, 0);
+        librarian.addBook(newBook);
+        return newBook;
     }
 
     public static void debugApp(Librarian librarian, Student student) {
