@@ -3,8 +3,9 @@ package P06_Library;
 import P06_Library.Exceptions.BookNoInsertedCorrect;
 import P06_Library.Exceptions.NoMoreSpaceToAddBooks;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
-// d
+
 
 public class Main {
     public static void main(String[] args) {
@@ -18,6 +19,7 @@ public class Main {
         Librarian librarian = new Librarian("Librarian1", library);
         Student student = new Student("Student1", library);
         Menu menu = new Menu();
+/*
 
         do {
             displayMenu(menu.getTypeIn(), menu.getLogIn());
@@ -49,14 +51,27 @@ public class Main {
 
 
         } while (selectedInMenu != 0);
+*/
 
         debugApp(librarian, student);
-        //actionByLibrarian(librarian, student, menu, console);
+        actionByLibrarian(librarian, student, menu, console);
         //actionsByStudent(student, menu, console);
     }
 
-    public static String typedByUser(Scanner console) {
+    public static String typedByUser(Scanner console1) {
+        Scanner console = new Scanner(System.in);
         return console.nextLine();
+    }
+
+    public static int numberTypedByUser(Scanner console1) {
+        Scanner console = new Scanner(System.in);
+        int numberTyped=0;
+        try {
+            numberTyped=console.nextInt();
+        }catch (InputMismatchException e){
+            System.out.println("You didn't typed a number");
+        }
+        return numberTyped;
     }
 
     //todo a better way to try 3 times or to try at infinite to insert
@@ -65,7 +80,8 @@ public class Main {
         System.out.println("What do you want to do? You can: \n");
         System.out.println("Type 0 to exit");
         System.out.println("Type 1 to insert again the book\n");
-        choice = Integer.parseInt(typedByUser(console));
+        choice = numberTypedByUser(console);
+
         switch (choice) {
             case 0:
                 break;
@@ -83,7 +99,7 @@ public class Main {
                     System.out.println("What do you want to do? You can: \n");
                     System.out.println("Type 0 to exit");
                     System.out.println("Type 1 to insert again the book\n");
-                    choice = Integer.parseInt(typedByUser(console));
+                    choice = numberTypedByUser(console);
                     switch (choice) {
                         case 0:
                             break;
@@ -150,7 +166,8 @@ public class Main {
                 displayMenu(menu.getTypeIn(), menu.getLibrarianMenu());
                 System.out.println("\nYour chose is:");
                 // todo a function to return only numbers
-                choice = Integer.parseInt(typedByUser(console));
+                choice = numberTypedByUser(console);
+
             }
 
 
@@ -219,8 +236,7 @@ public class Main {
             System.out.println("\nType " + previousChose + " to redo the action" +
                     ", type 0 to exit from librarian manu" +
                     "  or type any other key to return to the manu!\n");
-            debugS = typedByUser(console);
-            choice = Integer.parseInt(debugS);
+            choice = numberTypedByUser(console);
 
             if (choice == previousChose) {
                 redoAction = true;
@@ -240,7 +256,7 @@ public class Main {
             if (!redoAction) {
                 displayMenu(menu.getTypeIn(), menu.getStudentMenu());
                 System.out.println("\nYour chose is:");
-                choice = Integer.parseInt(typedByUser(console));
+                choice = numberTypedByUser(console);
             }
 
             switch (choice) {
@@ -281,7 +297,7 @@ public class Main {
             System.out.println("\nType " + previousChose + " to redo the action" +
                     ", type 0 to exit from student manu" +
                     "  or type any other key to return to the manu!\n");
-            choice = Integer.parseInt(typedByUser(console));
+            choice = numberTypedByUser(console);
             if (choice == previousChose) {
                 redoAction = true;
             } else {
