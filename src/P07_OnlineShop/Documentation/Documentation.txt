@@ -1,0 +1,10 @@
+
+La ce se refera maxTransactionAmount, daca in cont am 100 si maxTransactionAmount 150 si platesc 140 pot sa raman cu -40 sau nu?
+addPaymentMethod  sa adaugi un card in lista?
+selectPaymentMethod in functie de numarul carldului iti returneaza cardul ca obiect?
+
+ToDO
+aleg la adresa un nume sa ca o pot selecta
+
+Intrebare:
+Cum ar trebui sa tratam exceptiile ar trebui sa creem cate o exceptie pentru fiecare situatie sau in functie de mesaj facem o alegere?

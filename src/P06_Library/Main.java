@@ -23,7 +23,7 @@ public class Main {
         do {
             displayMenu(menu.getTypeIn(), menu.getLogIn());
             System.out.println("\nYour chose is:");
-             choice = numberTypedByUser(console);
+            choice = numberTypedByUser(console);
 
             switch (choice) {
                 case 0:
@@ -61,25 +61,26 @@ public class Main {
         return console.nextLine();
     }
 
-       public static int numberTypedByUser(Scanner console1) {
+    public static int numberTypedByUser(Scanner console1) {
         Scanner console = new Scanner(System.in);
         int numberTyped = -1;
         int numberOfTries = 3;
-      do {
+        do {
             try {
                 numberTyped = Integer.parseInt(console.nextLine());
                 numberOfTries = 0;
             } catch (InputMismatchException e) {
                 numberOfTries--;
-            }catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 numberOfTries--;
+                if (numberOfTries == 0) {
+                    System.out.println("You tried to many time, bye");
+                } else {
+                    System.out.println("You didn't typed a number, you have " + numberOfTries + " to type the desired number");
+                }
             }
-            if (numberOfTries==0){
-                System.out.println("You tried to many time, bye");
-            }else {
-                System.out.println("You didn't typed a number, you have " + numberOfTries + " to type the desired number");
-            }
-        }  while (numberOfTries != 0);
+        } while (numberOfTries != 0);
+
         return numberTyped;
     }
 /* a fost prima incercare una destul de proasta
