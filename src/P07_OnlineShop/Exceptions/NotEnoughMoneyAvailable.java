@@ -1,4 +1,4 @@
-package P06_OnlineShop.Exceptions;
+package P07_OnlineShop.Exceptions;
 
 public class NotEnoughMoneyAvailable extends Exception{
     public NotEnoughMoneyAvailable(String message) {super(message);

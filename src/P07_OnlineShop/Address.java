@@ -1,4 +1,4 @@
-package P06_OnlineShop;
+package P07_OnlineShop;
 
 public class Address{
   private String name;

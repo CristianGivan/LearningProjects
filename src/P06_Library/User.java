@@ -1,4 +1,4 @@
-package P07_Library;
+package P06_Library;
 
 public class User {
     private String name;

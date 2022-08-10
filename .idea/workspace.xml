@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d890d094-1bb8-4ea5-88f6-5f159b141a50" name="Changes" comment="Rename">
-      <change afterPath="$PROJECT_DIR$/src/P06_OnlineShop/Menu.java" afterDir="false" />
+    <list default="true" id="d890d094-1bb8-4ea5-88f6-5f159b141a50" name="Changes" comment="Working on main">
+      <change afterPath="$PROJECT_DIR$/src/P01_LearningTesting/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Exceptions/CardInactive.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/P06_OnlineShop/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_OnlineShop/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/P06_OnlineShop/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_OnlineShop/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P06_OnlineShop/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P06_OnlineShop/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P06_OnlineShop/CreditCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/CreditCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P06_OnlineShop/DebitCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/DebitCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P06_OnlineShop/Documentation/Document1.docx" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Documentation/Document1.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P06_OnlineShop/Documentation/Documentation.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Documentation/Documentation.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P06_OnlineShop/Exceptions/AmountAndOverDraftExecuted.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Exceptions/AmountAndOverDraftExecuted.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P06_OnlineShop/Exceptions/MaximTransactionAmountExceeded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Exceptions/MaximTransactionAmountExceeded.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P06_OnlineShop/Exceptions/NotEnoughMoneyAvailable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Exceptions/NotEnoughMoneyAvailable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P06_OnlineShop/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P01_LearningTesting/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P06_OnlineShop/Payable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Payable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P06_OnlineShop/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P06_OnlineShop/ShoppingAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/ShoppingAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P07_Library/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_Library/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P07_Library/Documentation/Concept.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_Library/Documentation/Concept.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P07_Library/Documentation/Document1.docx" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_Library/Documentation/Document1.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P07_Library/Documentation/Request.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_Library/Documentation/Request.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P07_Library/Exceptions/BookNoInsertedCorrect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_Library/Exceptions/BookNoInsertedCorrect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P07_Library/Exceptions/BookNotAvailable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_Library/Exceptions/BookNotAvailable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P07_Library/Exceptions/NoMoreSpaceToAddBooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_Library/Exceptions/NoMoreSpaceToAddBooks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P07_Library/Librarian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_Library/Librarian.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P07_Library/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_Library/Library.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P07_Library/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_Library/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P07_Library/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_Library/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P07_Library/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_Library/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P07_Library/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_Library/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,16 +79,17 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="P01_LearningTesting" />
       <recent name="P06_OnlineShop" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Shop">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="P07_Library.Main" />
+      <option name="MAIN_CLASS_NAME" value="P06_Library.Main" />
       <module name="LearningProjects" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="P07_Library.*" />
+          <option name="PATTERN" value="P06_Library.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -80,7 +107,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Shop" />
-        <item itemvalue="Application.P07_Library.Main" />
+        <item itemvalue="Application.P06_Library.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -99,7 +126,7 @@
       <workItem from="1659785709036" duration="4725000" />
       <workItem from="1660057038914" duration="1299000" />
       <workItem from="1660061466162" duration="20000" />
-      <workItem from="1660128384311" duration="14500000" />
+      <workItem from="1660128384311" duration="21025000" />
     </task>
     <task id="LOCAL-00001" summary="Algorithms added">
       <created>1659376732733</created>
@@ -171,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660128810232</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Working on main">
+      <created>1660147445796</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1660147445796</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,47 +241,21 @@
     <MESSAGE value="library done" />
     <MESSAGE value="OnlineShop added" />
     <MESSAGE value="Rename" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rename" />
+    <MESSAGE value="Working on main" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on main" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/P07_Library/Main.java</url>
+          <url>file://$PROJECT_DIR$/src/P06_Library/Main.java</url>
           <line>334</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/P07_Library/Main.java</url>
+          <url>file://$PROJECT_DIR$/src/P06_Library/Main.java</url>
           <line>273</line>
           <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/P06_OnlineShop/Shop.java</url>
-          <line>136</line>
-          <properties class="Shop" method="choseInMainMenu">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/P06_OnlineShop/Shop.java</url>
-          <line>78</line>
-          <properties class="Shop" method="toDOInMenu">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/P06_OnlineShop/Shop.java</url>
-          <line>165</line>
-          <properties class="Shop" method="choseInSecondMenu">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

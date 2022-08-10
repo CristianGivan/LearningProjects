@@ -1,13 +1,13 @@
-package P06_OnlineShop;
+package P07_OnlineShop;
 
-import P06_OnlineShop.Exceptions.AmountAndOverDraftExecuted;
+import P07_OnlineShop.Exceptions.AmountAndOverDraftExecuted;
 
 public class CreditCard extends Card implements Payable {
 
   private int maxOverDraft;
 
 
-  public CreditCard(boolean isActive, short pin, long cardNumber, String cardHolderName, int cardBalance, int maxOverDraft) {
+  public CreditCard(boolean isActive, int pin, long cardNumber, String cardHolderName, int cardBalance, int maxOverDraft) {
     super(isActive, pin, cardNumber, cardHolderName, cardBalance);
     this.maxOverDraft=maxOverDraft;
   }

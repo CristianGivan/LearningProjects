@@ -1,4 +1,4 @@
-package P07_Library;
+package P06_Library;
 
 import java.util.Scanner;
 //ToDO split the class book in 2 subclass to have number of copies...

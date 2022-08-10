@@ -1,7 +1,7 @@
-package P06_OnlineShop;
+package P07_OnlineShop;
 
-import P06_OnlineShop.Exceptions.MaximTransactionAmountExceeded;
-import P06_OnlineShop.Exceptions.NotEnoughMoneyAvailable;
+import P07_OnlineShop.Exceptions.MaximTransactionAmountExceeded;
+import P07_OnlineShop.Exceptions.NotEnoughMoneyAvailable;
 
 public class DebitCard extends Card implements Payable {
 
@@ -9,7 +9,7 @@ public class DebitCard extends Card implements Payable {
   private int maxTransactionAmount;
   private int getCardBalace;
 
-  public DebitCard (boolean isActive, short pin, long cardNumber, String cardHolderName,
+  public DebitCard (boolean isActive, int pin, long cardNumber, String cardHolderName,
                     int cardBalance, int maxTransactionAmount) {
     super(isActive, pin, cardNumber, cardHolderName, cardBalance);
     this.maxTransactionAmount=maxTransactionAmount;

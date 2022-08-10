@@ -1,6 +1,5 @@
-import P06_OnlineShop.Address;
-import P06_OnlineShop.Menu;
-import P06_OnlineShop.ShoppingAccount;
+import P07_OnlineShop.*;
+import P07_OnlineShop.Exceptions.CardInactive;
 
 import java.util.Scanner;
 
@@ -57,6 +56,11 @@ public class Shop {
         boolean redoAction = false;
         boolean isMenuChanged = false;
         String[] menuList = new String[0];
+        ShoppingAccount account = new ShoppingAccount();
+        Address address = new Address();
+        Card card = new Card(true, 1111, 12344321, "Popescu Ioan", 1000);
+        CreditCard creditCard = new CreditCard(true, 1111, 43211234, "Test1", 1200, 500);
+        DebitCard debitCard = new DebitCard(true, 1111, 511234, "Test12", 1200, 500);
 
         do {
             if (!redoAction) {
@@ -80,7 +84,7 @@ public class Shop {
                     choseInMainMenu(menu, choice);
                     break;
                 case 2:
-                    choseInSecondMenu(menu, choice);
+                    choseInSecondMenu(menu, choice, card);
                     break;
                 default:
                     System.out.println("error");
@@ -110,7 +114,7 @@ public class Shop {
     }
 
     public static void choseInMainMenu(Menu menu, int choice) {
-       String[] menuList = menu.getMainMenu();
+        String[] menuList = menu.getMainMenu();
 
         switch (choice) {
             case 0:
@@ -122,8 +126,43 @@ public class Shop {
                 toDOInMenu(menu, 2);
 
                 break;
+
+            default:
+                System.out.println("Unexpected chose, please try again from 0 to " +
+                        (menu.getMainMenu().length - 1) + " or type 0 to exit");
+
+                break;
+        }
+    }
+
+    public static void choseInSecondMenu(Menu menu, int choice, Card card) {
+        String[] menuList = menu.getMenu2();
+
+        switch (choice) {
+            case 0:
+                System.out.println("You choice to return to the main menu.\n");
+                toDOInMenu(menu, 1);
+                break;
+            case 1:
+                System.out.println("You chose to " + menuList[1] + "\n");
+                int newPin;
+                if (cardIsVerifiedSuccessful(card)) {
+                    System.out.println("insert the new pin");
+                    newPin = numberTypedByUser();
+                    card.setPin(newPin);
+                }
+                break;
             case 2:
                 System.out.println("You chose to " + menuList[2] + "\n");
+                if (cardIsVerifiedSuccessful(card)){
+                    try{
+                        card.freezCard();
+                        System.out.println("the card is now inactive");
+                    }
+                    catch (CardInactive e){
+                        System.out.println(e.getMessage());
+                    }
+                }
 
                 break;
             case 3:
@@ -138,32 +177,22 @@ public class Shop {
         }
     }
 
-    public static void choseInSecondMenu(Menu menu, int choice) {
-        String[] menuList = menu.getMenu2();
+    public static boolean cardIsVerifiedSuccessful(Card card) {
+        int oldPin;
 
-        switch (choice) {
-            case 0:
-                System.out.println("You choice to return to the main menu.\n");
-                toDOInMenu(menu, 1);
-                break;
-            case 1:
-                System.out.println("You chose to " + menuList[1] + "\n");
+        int numberOfTries = 3;
+        while (numberOfTries != 0) {
+            System.out.println("insert the pin for verification");
+            oldPin = numberTypedByUser();
 
-                break;
-            case 2:
-                System.out.println("You chose to " + menuList[2] + "\n");
-
-                break;
-            case 3:
-                System.out.println("You chose to " + menuList[3] + "\n");
-
-                break;
-            default:
-                System.out.println("Unexpected chose, please try again from 0 to " +
-                        (menu.getMainMenu().length - 1) + " or type 0 to exit");
-
-                break;
+            if (card.isPinCorect(oldPin)) {
+            return true;
+            } else {
+                System.out.println("you inserted the wrong pin, you can retry " + numberOfTries + " more times\n");
+                numberOfTries--;
+            }
         }
+        return false;
     }
 
     public static void displayMenu(String[] typeIn, String[] menu) {
@@ -204,6 +233,9 @@ public class Shop {
     public static void init() {
         ShoppingAccount account = new ShoppingAccount();
         Address address = new Address();
-        //Card card = new Card();
+        Card card = new Card(true, 1111, 12344321, "Popescu Ioan", 1000);
+        CreditCard creditCard = new CreditCard(true, 1111, 43211234, "Test1", 1200, 500);
+        DebitCard debitCard = new DebitCard(true, 1111, 511234, "Test12", 1200, 500);
+
     }
 }
