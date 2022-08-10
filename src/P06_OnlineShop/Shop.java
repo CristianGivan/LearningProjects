@@ -1,9 +1,8 @@
-import P07_OnlineShop.Address;
-import P07_OnlineShop.Card;
-import P07_OnlineShop.Exceptions.AmountAndOverDraftExecuted;
-import P07_OnlineShop.Exceptions.MaximTransactionAmountExceeded;
-import P07_OnlineShop.Exceptions.NotEnoughMoneyAvailable;
-import P07_OnlineShop.ShoppingAccount;
+import P06_OnlineShop.Address;
+import P06_OnlineShop.Card;
+import P06_OnlineShop.Exceptions.AmountAndOverDraftExecuted;
+import P06_OnlineShop.Exceptions.NotEnoughMoneyAvailable;
+import P06_OnlineShop.ShoppingAccount;
 
 public class Shop {
 

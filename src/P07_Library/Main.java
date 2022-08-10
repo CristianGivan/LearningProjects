@@ -1,7 +1,7 @@
-package P06_Library;
+package P07_Library;
 
-import P06_Library.Exceptions.BookNoInsertedCorrect;
-import P06_Library.Exceptions.NoMoreSpaceToAddBooks;
+import P07_Library.Exceptions.BookNoInsertedCorrect;
+import P07_Library.Exceptions.NoMoreSpaceToAddBooks;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

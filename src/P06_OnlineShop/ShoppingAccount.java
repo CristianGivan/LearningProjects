@@ -1,4 +1,4 @@
-package P07_OnlineShop;
+package P06_OnlineShop;
 
 // ar merge sa pun un user care sa aiba cateva atribute de la acount
 public class ShoppingAccount {

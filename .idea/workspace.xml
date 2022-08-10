@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d890d094-1bb8-4ea5-88f6-5f159b141a50" name="Changes" comment="library done">
-      <change afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Card.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/P07_OnlineShop/CreditCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/P07_OnlineShop/DebitCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Documentation/Documentation.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Exceptions/AmountAndOverDraftExecuted.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Exceptions/MaximTransactionAmountExceeded.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Exceptions/NotEnoughMoneyAvailable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Payable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Shop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/P07_OnlineShop/ShoppingAccount.java" afterDir="false" />
+    <list default="true" id="d890d094-1bb8-4ea5-88f6-5f159b141a50" name="Changes" comment="OnlineShop added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/P06_Library/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P06_Library/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +82,9 @@
       <workItem from="1659728843189" duration="812000" />
       <workItem from="1659761675579" duration="3153000" />
       <workItem from="1659782850422" duration="439000" />
-      <workItem from="1659785709036" duration="4080000" />
+      <workItem from="1659785709036" duration="4725000" />
+      <workItem from="1660057038914" duration="1299000" />
+      <workItem from="1660061466162" duration="20000" />
     </task>
     <task id="LOCAL-00001" summary="Algorithms added">
       <created>1659376732733</created>
@@ -152,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659728968478</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="OnlineShop added">
+      <created>1659795439428</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1659795439428</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,7 +183,8 @@
     <MESSAGE value="Test added" />
     <MESSAGE value="Erroare la numberTypedByUser daca dau o litera imi merge dar prost" />
     <MESSAGE value="library done" />
-    <option name="LAST_COMMIT_MESSAGE" value="library done" />
+    <MESSAGE value="OnlineShop added" />
+    <option name="LAST_COMMIT_MESSAGE" value="OnlineShop added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

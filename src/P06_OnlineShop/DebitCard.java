@@ -1,9 +1,7 @@
-package P07_OnlineShop;
+package P06_OnlineShop;
 
-import P07_OnlineShop.Card;
-import P07_OnlineShop.Exceptions.MaximTransactionAmountExceeded;
-import P07_OnlineShop.Exceptions.NotEnoughMoneyAvailable;
-import P07_OnlineShop.Payable;
+import P06_OnlineShop.Exceptions.MaximTransactionAmountExceeded;
+import P06_OnlineShop.Exceptions.NotEnoughMoneyAvailable;
 
 public class DebitCard extends Card implements Payable {
 

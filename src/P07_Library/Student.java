@@ -1,4 +1,4 @@
-package P06_Library;
+package P07_Library;
 
 public class Student extends User {
     private Library library;

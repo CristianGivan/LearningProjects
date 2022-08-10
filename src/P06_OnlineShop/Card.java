@@ -1,4 +1,4 @@
-package P07_OnlineShop;
+package P06_OnlineShop;
 
 /**/
 public class Card {
