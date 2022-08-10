@@ -50,7 +50,13 @@ public class Card {
     return false;
   }
 
-  public void changePin(short olPin, short newPin) {
+  public boolean isPinCorect (short pin){
+    if (pin==this.pin){
+      return true;
+    }
+    return false;
+  }
+  public void changePin(boolean oldPinChecked, short newPin) {
     // verified that the old pin is ok
     // verified that the new pin is valid PinCardExceptions
     // change the pin
