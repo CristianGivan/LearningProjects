@@ -1,3 +1,5 @@
+package P07_OnlineShop;
+
 import P07_OnlineShop.*;
 import P07_OnlineShop.Exceptions.CardInactive;
 
@@ -59,8 +61,7 @@ public class Shop {
         ShoppingAccount account = new ShoppingAccount();
         Address address = new Address();
         Card card = new Card(true, 1111, 12344321, "Popescu Ioan", 1000);
-        CreditCard creditCard = new CreditCard(true, 1111, 43211234, "Test1", 1200, 500);
-        DebitCard debitCard = new DebitCard(true, 1111, 511234, "Test12", 1200, 500);
+
 
         do {
             if (!redoAction) {
@@ -144,6 +145,7 @@ public class Shop {
                 toDOInMenu(menu, 1);
                 break;
             case 1:
+                // Change PIN
                 System.out.println("You chose to " + menuList[1] + "\n");
                 int newPin;
                 if (cardIsVerifiedSuccessful(card)) {
@@ -153,21 +155,24 @@ public class Shop {
                 }
                 break;
             case 2:
+                //frez the card
                 System.out.println("You chose to " + menuList[2] + "\n");
-                if (cardIsVerifiedSuccessful(card)){
-                    try{
+                if (cardIsVerifiedSuccessful(card)) {
+                    try {
                         card.freezCard();
                         System.out.println("the card is now inactive");
-                    }
-                    catch (CardInactive e){
+                    } catch (CardInactive e) {
                         System.out.println(e.getMessage());
                     }
                 }
 
                 break;
             case 3:
+                //buy
                 System.out.println("You chose to " + menuList[3] + "\n");
-
+                CreditCard creditCard = new CreditCard(true, 1111, 43211234, "Test1", 1200, 500);
+                DebitCard debitCard = new DebitCard(true, 1111, 511234, "Test12", 1200, 500);
+                Card card1=selectCard(debitCard,creditCard);
                 break;
             default:
                 System.out.println("Unexpected chose, please try again from 0 to " +
@@ -177,6 +182,23 @@ public class Shop {
         }
     }
 
+
+    public static Card selectCard(DebitCard debitCard,CreditCard creditCard){
+        int choice;
+        Card card=new Card(true,0, 0,"",0);
+        System.out.println("Type 1 to use debit card\nType 2 to use a credit card");
+        System.out.println("\nYour chose is:");
+        choice = numberTypedByUser();
+
+        if(choice==1){
+            System.out.println("you choose: \n"+debitCard.toString());
+            return debitCard;
+        }else {
+            System.out.println("you choose: \n"+creditCard.toString());
+            return creditCard;
+        }
+
+    }
     public static boolean cardIsVerifiedSuccessful(Card card) {
         int oldPin;
 
@@ -186,7 +208,7 @@ public class Shop {
             oldPin = numberTypedByUser();
 
             if (card.isPinCorect(oldPin)) {
-            return true;
+                return true;
             } else {
                 System.out.println("you inserted the wrong pin, you can retry " + numberOfTries + " more times\n");
                 numberOfTries--;

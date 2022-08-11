@@ -30,7 +30,7 @@ public class Menu {
         this.Menu2[0] = "exit from librarian manu";
         this.Menu2[1] = "Change PIN";
         this.Menu2[2] = "frez the card";
-        this.Menu2[3] = "delete a copy of a book base on ISBN";
+        this.Menu2[3] = "buy";
         this.Menu2[4] = "display the details for all the books";
         this.Menu2[5] = "display the book details base on ISBN";
         this.Menu2[6] = "display all the books borrowed by a student";

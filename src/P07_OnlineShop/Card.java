@@ -11,7 +11,7 @@ public class Card {
     private String cardHolderName;
     private int cardBalance;
 
-    public boolean isActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 
@@ -74,6 +74,16 @@ public class Card {
 
     }
 
+    @Override
+    public String toString() {
+        return "Card{" +
+                "isActive=" + isActive +
+                ", pin=" + pin +
+                ", cardNumber=" + cardNumber +
+                ", cardHolderName='" + cardHolderName + '\'' +
+                ", cardBalance=" + cardBalance +
+                '}';
+    }
 }
 
 

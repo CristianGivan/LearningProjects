@@ -33,26 +33,14 @@ public class CreditCard extends Card implements Payable {
     return this.maxOverDraft+this.getCardBalance();
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  @Override
+  public String toString() {
+    return "CreditCard{" +
+            "isActive=" + this.getIsActive() +
+            ", cardNumber=" + this.getCardNumber() +
+            ", cardHolderName='" + this.getCardHolderName() + '\'' +
+            ", cardBalance=" + this.getCardBalance() +
+            ", maxOverDraft=" + maxOverDraft +
+            '}';
+  }
 }

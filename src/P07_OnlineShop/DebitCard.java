@@ -7,7 +7,7 @@ public class DebitCard extends Card implements Payable {
 
 
   private int maxTransactionAmount;
-  private int getCardBalace;
+
 
   public DebitCard (boolean isActive, int pin, long cardNumber, String cardHolderName,
                     int cardBalance, int maxTransactionAmount) {
@@ -25,9 +25,9 @@ public class DebitCard extends Card implements Payable {
 
   public int pay(int amount) throws NotEnoughMoneyAvailable, MaximTransactionAmountExceeded {
     int amountAvailable = 0;
-    if(amount>this.getCardBalace) {
+    if(amount>this.getCardBalance()) {
       //treat the exception in Shop
-      amountAvailable = this.getCardBalace;
+      amountAvailable = this.getCardBalance();
       throw new NotEnoughMoneyAvailable("Not enough money!");// this masage is check if
 
     }
@@ -41,4 +41,14 @@ public class DebitCard extends Card implements Payable {
     return amountAvailable;
   }
 
+  @Override
+  public String toString() {
+    return "DebitCard{" +
+            "isActive=" + this.getIsActive() +
+            ", cardNumber=" + this.getCardNumber() +
+            ", cardHolderName='" + this.getCardHolderName() + '\'' +
+            ", cardBalance=" + this.getCardBalance() +
+            ", maxTransactionAmount=" + maxTransactionAmount +
+            '}';
+  }
 }
