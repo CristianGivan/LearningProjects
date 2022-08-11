@@ -32,9 +32,9 @@ public class Menu {
         this.Menu2[2] = "frez the card";
         this.Menu2[3] = "pay";
         this.Menu2[4] = "display all cards of the account";
-        this.Menu2[5] = "insert a new payment method";
-        this.Menu2[6] = "display all the books borrowed by a student";
-        this.Menu2[7] = "help";
+        this.Menu2[5] = "display all addresses of the account";
+        this.Menu2[6] = "insert a new payment method";
+        this.Menu2[7] = "delete a card from card list";
     }
 
     public void setMenu3() {

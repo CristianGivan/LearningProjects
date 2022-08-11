@@ -31,58 +31,81 @@ public class ShoppingAccount {
         this.lastname = lastname;
         this.currentPaymentMethod = currentPaymentMethod;
         this.currentBillingAddress = currentBillingAddress;
-        this.numberOfCards = cardList.length;
-        this.numberOfAddress = addressList.length;
+        findNumberOfValidCards();
+        findNumberOfValidAddresses();
     }
 
 
     // trebuie sa setez by defoult un cad si o addres la initializarea
     public void addPaymentMethod(Card card) {
         // TODO check if the card is not null
-        numberOfCards++;
+
+        //todo cred ca trebuie dupa ce adaug
         cardList[numberOfCards] = card;
+        numberOfCards++;
     }
 
-    public void deletePaymentMethod(long cardNumber) {
-        int numberOfCardFound = findCardIndex(cardNumber);
-        for (int i = numberOfCardFound + 1; i < cardList.length; i++) {
+    public void deletePaymentMethod(int cardIndex) {
+        //int cardIndex = findCardIndex(cardNumber);
+        for (int i = cardIndex + 1; i < cardList.length; i++) {
             cardList[i - 1] = cardList[i];
         }
     }
 
-    public void selectPaymentMethod(Long cardNumber) {
-        this.currentPaymentMethod = cardList[findCardIndex(cardNumber)];
+    public void selectPaymentMethod(int cardIndex)  {
+        this.currentPaymentMethod = cardList[cardIndex];
 
     }
 
     public boolean findNumberOfValidCards() {
-        //todo testez cu o gaura intre elemente
+        int lastNotNull = 0;
         for (int i = 0; i < cardList.length; i++) {
             if (cardList[i] != null) {
-                numberOfCards=i;
+                lastNotNull = i;
+                numberOfCards++;
             }
         }
+        //todo sa verific unde trebuie sa pun +1
+        if (numberOfCards == lastNotNull+1) {
+            return true;
+        } else {
+            numberOfCards = lastNotNull+1;
+            return false;
+        }
     }
-
-    public int findCardIndex(long cardNumber) {
+    public boolean findNumberOfValidAddresses() {
+        int lastNotNull = 0;
+        for (int i = 0; i < addressList.length; i++) {
+            if (addressList[i] != null) {
+                lastNotNull = i;
+                numberOfAddress++;
+            }
+        }
+        if (numberOfAddress == lastNotNull+1) {
+            return true;
+        } else {
+            numberOfAddress = lastNotNull+1;
+            return false;
+        }
+    }
+    public int findCardIndex(long cardNumber) throws CardNotFound{
         int numberOfCardFound = -1;
-        for (int i = 0; i < cardList.length; i++) {
+        //todo NullPointerException
+        for (int i = 0; i < numberOfCards; i++) {
             if (cardList[i].getCardNumber() == cardNumber) {
                 numberOfCardFound = i;
             }
-
+        }
+        if (numberOfCardFound == -1) {
+            throw new CardNotFound("The card was not found!");
         }
         return numberOfCardFound;
     }
 
     public Card findCardByNumber(int index) throws CardNotFound {
         int cardNumber = findCardIndex(index);
-        if (cardNumber == -1) {
-            throw new CardNotFound("The card was not found!");
-        }
         return this.getCardList()[findCardIndex(index)];
     }
-
 
     //similar si la addresslist
     public void generateReceipt(int amount, Card card, Address address) {
@@ -93,13 +116,35 @@ public class ShoppingAccount {
     }
 
     public void displayAllCardsDetails() {
+        int numberOfNullCardsNotDisplayed = 0;
         System.out.println("All available cards are:");
         for (int i = 0; i < numberOfCards; i++) {
-            System.out.println(cardList[i].toString());
+            try {
+                System.out.println(cardList[i].toString());
+            } catch (NullPointerException e) {
+                numberOfNullCardsNotDisplayed++;
+            }
+        }
+        if (numberOfNullCardsNotDisplayed > 0) {
+            System.out.println("\nThere were " + numberOfNullCardsNotDisplayed +
+                    " null cards that wasn't displayed ");
         }
     }
-
-
+    public void displayAllAddressesDetails() {
+        int numberOfNullCardsNotDisplayed = 0;
+        System.out.println("All available addresses are:");
+        for (int i = 0; i < numberOfAddress; i++) {
+            try {
+                System.out.println(addressList[i].toString());
+            } catch (NullPointerException e) {
+                numberOfNullCardsNotDisplayed++;
+            }
+        }
+        if (numberOfNullCardsNotDisplayed > 0) {
+            System.out.println("\nThere were " + numberOfNullCardsNotDisplayed +
+                    " null addresses that wasn't displayed ");
+        }
+    }
     //getter/setter
     public void setCardList(Card[] cardList) {
         this.cardList = cardList;

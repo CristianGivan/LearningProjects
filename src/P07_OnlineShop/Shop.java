@@ -121,9 +121,17 @@ public class Shop {
                 account.displayAllCardsDetails();
                 break;
             case 5:
+                //display all addresses of the account
+                account.displayAllAddressesDetails();
+                break;
+            case 6:
                 //insert a new payment method
                 insertNewCard(account);
                 break;
+            case 7:
+                //delete a card from card list
+                //todo test the second deletion
+                deleteTheCardByNumber(account);
             default:
                 System.out.println("Unexpected chose, please try again from 0 to " +
                         (menu.getMainMenu().length - 1) + " or type 0 to exit");
@@ -165,7 +173,7 @@ public class Shop {
     public static void pay(Menu menu, ShoppingAccount account) {
         String[] menuList = menu.getMenu2();
         Card card;
-        System.out.println("You chose to " + menuList[4] + "\n");
+        System.out.println("You chose to " + menuList[5] + "\n");
         //todo shopping card creation
         int amount;
         int numberOfTries = 0;
@@ -258,16 +266,28 @@ public class Shop {
                 System.out.println("\nBye bye");
                 break;
             case 1:
+                //todo treat ArrayIndexOutOfBoundsException
                 System.out.println("You choose to insert a credit card");
                 account.addPaymentMethod(createNewCreditCard());
                 break;
             case 2:
+                //todo treat ArrayIndexOutOfBoundsException
                 System.out.println("You choose to insert a debit card");
                 account.addPaymentMethod(createNewDebitCard());
                 break;
             default:
                 System.out.println("Your choose is not valid");
                 break;
+        }
+    }
+
+    public static void deleteTheCardByNumber(ShoppingAccount account) {
+        int cardIndex = findIndexOfCardByNumber(account);
+        if (cardIndex == -1) {
+            System.out.println("The card wasen't found!");
+        } else {
+            account.deletePaymentMethod(cardIndex);
+            System.out.println("The card number " + cardIndex + " was deleted");
         }
     }
 
@@ -326,18 +346,28 @@ public class Shop {
     }
 
     public static Card selectCardByNumber(ShoppingAccount account) {
-        Card card = new Card(true, 0, 0, "",
-                0);
-        int cardNumber;
+        Card card = new Card(true, 0, 0, "", 0);
+        int cardIndex = findIndexOfCardByNumber(account);
+        if (cardIndex == -1) {
+            return card;
+        } else {
+            return account.getCardList()[cardIndex];
+        }
+    }
+
+    public static int findIndexOfCardByNumber(ShoppingAccount account) {
         int numberOfTries = 3;
+        int cardIndex = -1;
+        long cardNumber;
 
         do {
             account.displayAllCardsDetails();
             System.out.println("\nType the number of the card that you want to select from the list:");
             cardNumber = numberTypedByUser();
+            //todo is this the best plice for try catch?
             try {
-                card = account.findCardByNumber(cardNumber);
-                System.out.println("You selected: " + card.toString());
+                cardIndex = account.findCardIndex(cardNumber);
+                System.out.println("You selected the card with the index: " + cardIndex);
                 numberOfTries = 0;
             } catch (CardNotFound e) {
                 numberOfTries--;
@@ -353,15 +383,11 @@ public class Shop {
                         System.out.println("\nBye bye");
                     }
                 }
-                //todo it could be improve "default card"
-                System.out.println("You remain with the the default card");
-                System.out.println(card.toString());
+                System.out.println("You have an error index");
             }
 
         } while (numberOfTries > 0);
-
-
-        return card;
+        return cardIndex;
     }
 
     public static boolean cardIsVerifiedSuccessful(Card card) {
@@ -420,23 +446,34 @@ public class Shop {
     }
 
     public static ShoppingAccount init() {
-        int maxNumberOfCards=10;
-        int maxNumberOfAddresses=10;
+        int maxNumberOfCards = 10;
+        int maxNumberOfAddresses = 10;
 
         Address address1 = new Address("a1", "s1", "st1", 1);
         Address address2 = new Address("a2", "s2", "st2", 2);
+        Address address3 = new Address("a3", "s3", "st3", 3);
+        Address address4 = new Address("a4", "s4", "st4", 4);
+        Address address5 = new Address("a5", "s5", "st5", 5);
+
+
         Address[] addresses = new Address[maxNumberOfAddresses];
-        addresses[0]=address1;
-        addresses[1]=address2;
+        addresses[0] = address1;
+        addresses[1] = address2;
+        addresses[3] = address4;
+        addresses[4] = address5;
+        addresses[2] = address3;
 
         Card card = new Card(true, 1, 1, "Popescu Ioan", 1000);
+        Card card1 = new Card(true, 5, 5, "Pop", 1000);
         CreditCard creditCard = new CreditCard(true, 2, 2, "Test1", 1200, 500);
         DebitCard debitCard = new DebitCard(true, 3, 3, "Test12", 1200, 500);
         Card nullCard = new Card(true, 0, 0, "", 0);
         Card[] cards = new Card[maxNumberOfCards];
-        cards[0]=card;
-        cards[1]=creditCard;
-        cards[2]=debitCard;
+        cards[0] = card;
+        cards[1] = creditCard;
+        cards[3] = debitCard;
+        cards[4] = nullCard;
+        cards[2] = card1;
 
         ShoppingAccount account = new ShoppingAccount(cards, addresses, "email1", "password",
                 "lastName", "firstName", card, address1.getName());
