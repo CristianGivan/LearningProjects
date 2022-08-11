@@ -4,10 +4,11 @@ import P07_OnlineShop.Exceptions.AmountAndOverDraftExecuted;
 
 public class CreditCard extends Card implements Payable {
 
-  private int maxOverDraft;
+  private final int maxOverDraft;
 
 
-  public CreditCard(boolean isActive, int pin, long cardNumber, String cardHolderName, int cardBalance, int maxOverDraft) {
+  public CreditCard(boolean isActive, int pin, long cardNumber, String cardHolderName,
+                    int cardBalance, int maxOverDraft) {
     super(isActive, pin, cardNumber, cardHolderName, cardBalance);
     this.maxOverDraft=maxOverDraft;
   }
@@ -15,15 +16,11 @@ public class CreditCard extends Card implements Payable {
   public int getMaxOverDraft() {
     return maxOverDraft;
   }
-
+/* for moment the requirements are that is not changing
   public void setMaxOverDraft(int maxOverDraft) {
     this.maxOverDraft = maxOverDraft;
-  }
+  }*/
 
-  public void setMaxTransactionAmount(int newMaxTransactionAmount){
-  
-}
-  
   public int pay(int amount) throws AmountAndOverDraftExecuted {
     if (amount>this.maxOverDraft+this.getCardBalance()){
       //treat the exception in Shop

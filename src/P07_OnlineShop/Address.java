@@ -1,40 +1,47 @@
 package P07_OnlineShop;
 
-public class Address{
-  private String name;
-  private String city;
-  private String street;
-  private short number;
+public class Address {
+    private String name;
+    private String city;
+    private String street;
+    private int number;
 
-  public String getName() {
-    return name;
-  }
+    public Address(String name, String city, String street, int number) {
+        this.name = name;
+        this.city = city;
+        this.street = street;
+        this.number = number;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public String getCity() {
-    return city;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public void setCity(String city) {
-    this.city = city;
-  }
+    public String getCity() {
+        return city;
+    }
 
-  public String getStreet() {
-    return street;
-  }
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-  public void setStreet(String street) {
-    this.street = street;
-  }
+    public String getStreet() {
+        return street;
+    }
 
-  public short getNumber() {
-    return number;
-  }
+    public void setStreet(String street) {
+        this.street = street;
+    }
 
-  public void setNumber(short number) {
-    this.number = number;
-  }
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
 }

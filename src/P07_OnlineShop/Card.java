@@ -1,9 +1,12 @@
 package P07_OnlineShop;
 
+import P07_OnlineShop.Exceptions.AmountAndOverDraftExecuted;
 import P07_OnlineShop.Exceptions.CardInactive;
+import P07_OnlineShop.Exceptions.MaximTransactionAmountExceeded;
+import P07_OnlineShop.Exceptions.NotEnoughMoneyAvailable;
 
 /**/
-public class Card {
+public class Card implements Payable {
 
     private boolean isActive;
     private int pin;
@@ -45,7 +48,7 @@ public class Card {
         this.cardBalance = cardBalance;
     }
 
-    // ? where shall I insert this method
+    // todo this method should be inserted here it is defined also in Shop
     public boolean isAuthentified(long cardNumber, int pin) {
         // verify that you are the holder of the card
         // compare the number and the pin with this
@@ -63,26 +66,28 @@ public class Card {
         this.pin = pin;
     }
 
-
-    public void freezCard() throws CardInactive{
+    public void freezeCard() throws CardInactive{
         if (!this.isActive){
             throw new CardInactive("Card is already inactive");
         }
         this.setActive(false);
-        // authentification
-        // change status if needed
-
     }
 
     @Override
     public String toString() {
         return "Card{" +
                 "isActive=" + isActive +
-                ", pin=" + pin +
                 ", cardNumber=" + cardNumber +
                 ", cardHolderName='" + cardHolderName + '\'' +
                 ", cardBalance=" + cardBalance +
                 '}';
+    }
+// todo is necessarily?
+    @Override
+    public int pay(int amount) throws AmountAndOverDraftExecuted,
+            NotEnoughMoneyAvailable, MaximTransactionAmountExceeded {
+        this.cardBalance=this.cardBalance-amount;
+        return 0;
     }
 }
 
