@@ -35,7 +35,7 @@ public class ShoppingAccount {
 
     // trebuie sa setez by defoult un cad si o addres la initializarea
     public void addPaymentMethod(Card card) {
-        // TODO 4 check if the card is not null
+        // TODO check if the card is not null
         cardList[numberOfCards] = card;
         numberOfCards++;
     }

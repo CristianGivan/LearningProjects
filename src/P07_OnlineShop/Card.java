@@ -13,10 +13,9 @@ public class Card implements Payable {
     private String cardHolderName;
     private int cardBalance;
 
-
     public Card(boolean isActive, int pin, long cardNumber,
                 String cardHolderName, int cardBalance) {
-        //TODO 4 check if the elements are not null
+        //TODO check if the elements are not null
         this.isActive = isActive;
         this.pin = pin;
         this.cardNumber = cardNumber;
@@ -42,7 +41,7 @@ public class Card implements Payable {
         this.setActive(false);
     }
 
-    // todo 1 is necessarily?
+    // todo could be done with abstract
     @Override
     public int pay(int amount) throws AmountAndOverDraftExecuted,
             NotEnoughMoneyAvailable, MaximTransactionAmountExceeded {

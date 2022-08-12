@@ -4,6 +4,7 @@ import P07_OnlineShop.Exceptions.AmountAndOverDraftExecuted;
 
 public class CreditCard extends Card implements Payable {
 
+
     private final int maxOverDraft;
 
     public CreditCard(boolean isActive, int pin, long cardNumber, String cardHolderName,

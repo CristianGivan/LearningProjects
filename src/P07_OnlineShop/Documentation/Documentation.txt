@@ -8,12 +8,14 @@
 
 +Intrebare:
 - Card implements Payable mai trebuie sa pun si la subclasa? Am ales sa fac asta pentru ca sa pot
-apela pay pe card
+apela pay pe card -- vezi abstract
 - am facut bine ca am facut castigung la Card? ce alte variante mai aveam?
 - am incercar sa pun in shoop tot ce triite mesaj sau are nevoie citire de la tastatura dar
 mi se pare ca am prea exagerata mai ales la find
+
 - unde ar fi cel mai bine sa creem metoda care verifica pinul (daca este introdusa corect)
 in clasa Card sau in Shopping Account daca ar fi sa fiu consisten as pune in card.
+
 - m-am mai gandit si pare a fi bin dar sa preiznt, chiar ii super traba cu try and catch:
 aici la findindex nu stiu daca am facut bine adica din partea deuplicitatiti este bin dar unde este
 pusa inceercarea nu

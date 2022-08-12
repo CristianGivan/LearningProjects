@@ -29,7 +29,9 @@ public class DebitCard extends Card implements Payable {
             //treat the exception in Shop
             amountAvailable = this.getCardBalance();
             throw new NotEnoughMoneyAvailable("Not enough money!");// this masage is check if
-        } else if (amount > this.maxTransactionAmount) {
+        }
+        //todo fara else
+        if (amount > this.maxTransactionAmount) {
             //treat the exception in Shop
             amountAvailable = this.maxTransactionAmount;
             throw new MaximTransactionAmountExceeded("The maximum amount for a transaction was excceded!");
