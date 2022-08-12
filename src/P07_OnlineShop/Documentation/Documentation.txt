@@ -1,22 +1,32 @@
-
-La ce se refera maxTransactionAmount, daca in cont am 100 si maxTransactionAmount 150 si platesc 140 pot sa raman cu -40 sau nu?
-addPaymentMethod  sa adaugi un card in lista?
-selectPaymentMethod in functie de numarul carldului iti returneaza cardul ca obiect?
-
-ToDO
++Specificatii
 - aleg la adresa un nume sa ca o pot selecta
+
++ToDO
 - verific daca email este introdus corect
 - verific daca pinul este introdus corect
 
 
-Intrebare:
-- unde ar fi cel mai bine sa creem metoda care verifica pinul in clasa Card sau in Shopping Account
-- eu am pus functia de cautare in shoop chioar daca as fi fost tenta sa o pun in shopping list
-- Card implements Payable mai trebuie sa pun si la subclasa? Am ales sa fac asta pentru ca sa pot apela pay pe card
++Intrebare:
+- Card implements Payable mai trebuie sa pun si la subclasa? Am ales sa fac asta pentru ca sa pot
+apela pay pe card
 - am facut bine ca am facut castigung la Card? ce alte variante mai aveam?
-Cum ar trebui sa tratam exceptiile ar trebui sa creem cate o exceptie pentru fiecare situatie sau in functie de mesaj facem o alegere?
+- am incercar sa pun in shoop tot ce triite mesaj sau are nevoie citire de la tastatura dar
+mi se pare ca am prea exagerata mai ales la find
+- unde ar fi cel mai bine sa creem metoda care verifica pinul (daca este introdusa corect)
+in clasa Card sau in Shopping Account daca ar fi sa fiu consisten as pune in card.
+- m-am mai gandit si pare a fi bin dar sa preiznt, chiar ii super traba cu try and catch:
+aici la findindex nu stiu daca am facut bine adica din partea deuplicitatiti este bin dar unde este
+pusa inceercarea nu
 
-Experienta
+- eu am pus functia de cautare in shoop chiar daca as fi fost tenta sa o pun in shopping list
 
++Done
+-Cum ar trebui sa tratam exceptiile ar trebui sa creem cate o exceptie pentru fiecare situatie sau
+in functie de mesaj facem o alegere?
+-La ce se refera maxTransactionAmount, daca in cont am 100 si maxTransactionAmount 150 si platesc 140 pot sa raman cu -40 sau nu?
+-addPaymentMethod  sa adaugi un card in lista?
+-selectPaymentMethod in functie de numarul carldului iti returneaza cardul ca obiect?
+
++Experienta
 - a fost foarte complicat sa revin la codul care l-am schitat inainte foarte incomplet si nu mai stiam ce trebuie sa fac
 si ce am facut ce mergea si ce nu mergea

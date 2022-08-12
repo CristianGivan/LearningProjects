@@ -10,19 +10,16 @@ public class ShoppingAccount {
     private String firstName;
     private String lastname;
     private Card currentPaymentMethod;
-    private String currentBillingAddress;
+    private Address currentBillingAddress;
     private String emailAddress;
     private String password;// it should be 10 characters big small letters numbers, special characters
     private int numberOfCards;
     private int numberOfAddress;
 
-    public Card[] getCardList() {
-        return cardList;
-    }
 
     public ShoppingAccount(Card[] cardList, Address[] addressList, String emailAddress,
                            String password, String firstName, String lastname, Card currentPaymentMethod,
-                           String currentBillingAddress) {
+                           Address currentBillingAddress) {
         this.cardList = cardList;
         this.addressList = addressList;
         this.emailAddress = emailAddress;
@@ -38,23 +35,19 @@ public class ShoppingAccount {
 
     // trebuie sa setez by defoult un cad si o addres la initializarea
     public void addPaymentMethod(Card card) {
-        // TODO check if the card is not null
-
-        //todo cred ca trebuie dupa ce adaug
+        // TODO 4 check if the card is not null
         cardList[numberOfCards] = card;
         numberOfCards++;
     }
 
     public void deletePaymentMethod(int cardIndex) {
-        //int cardIndex = findCardIndex(cardNumber);
         for (int i = cardIndex + 1; i < cardList.length; i++) {
             cardList[i - 1] = cardList[i];
         }
     }
 
-    public void selectPaymentMethod(int cardIndex)  {
+    public void selectPaymentMethod(int cardIndex) {
         this.currentPaymentMethod = cardList[cardIndex];
-
     }
 
     public boolean findNumberOfValidCards() {
@@ -65,14 +58,14 @@ public class ShoppingAccount {
                 numberOfCards++;
             }
         }
-        //todo sa verific unde trebuie sa pun +1
-        if (numberOfCards == lastNotNull+1) {
+        if (numberOfCards == lastNotNull + 1) {
             return true;
         } else {
-            numberOfCards = lastNotNull+1;
+            numberOfCards = lastNotNull + 1;
             return false;
         }
     }
+
     public boolean findNumberOfValidAddresses() {
         int lastNotNull = 0;
         for (int i = 0; i < addressList.length; i++) {
@@ -81,14 +74,15 @@ public class ShoppingAccount {
                 numberOfAddress++;
             }
         }
-        if (numberOfAddress == lastNotNull+1) {
+        if (numberOfAddress == lastNotNull + 1) {
             return true;
         } else {
-            numberOfAddress = lastNotNull+1;
+            numberOfAddress = lastNotNull + 1;
             return false;
         }
     }
-    public int findCardIndex(long cardNumber) throws CardNotFound{
+
+    public int findCardIndex(long cardNumber) throws CardNotFound {
         int numberOfCardFound = -1;
         //todo NullPointerException
         for (int i = 0; i < numberOfCards; i++) {
@@ -107,12 +101,11 @@ public class ShoppingAccount {
         return this.getCardList()[findCardIndex(index)];
     }
 
-    //similar si la addresslist
-    public void generateReceipt(int amount, Card card, Address address) {
-        System.out.println(this.firstName + " " + this.lastname + " payed " + amount +
-                "using the card with the number" + card.getCardNumber() +
-                " with the address str. " + address.getStreet() + " Nr. " + address.getNumber() +
-                " city " + address.getCity());
+    public String generateReceipt(int amount) {
+        return "Name: " + this.firstName + " " + this.lastname + " payed " + amount +
+                "using the card with the number" + currentPaymentMethod.getCardNumber() +
+                " with the address str. " + currentBillingAddress.getStreet() + " Nr. " +
+                currentBillingAddress.getNumber() + " city " + currentBillingAddress.getCity();
     }
 
     public void displayAllCardsDetails() {
@@ -130,6 +123,7 @@ public class ShoppingAccount {
                     " null cards that wasn't displayed ");
         }
     }
+
     public void displayAllAddressesDetails() {
         int numberOfNullCardsNotDisplayed = 0;
         System.out.println("All available addresses are:");
@@ -145,7 +139,12 @@ public class ShoppingAccount {
                     " null addresses that wasn't displayed ");
         }
     }
+
     //getter/setter
+    public Card[] getCardList() {
+        return cardList;
+    }
+
     public void setCardList(Card[] cardList) {
         this.cardList = cardList;
     }
@@ -206,11 +205,11 @@ public class ShoppingAccount {
         this.currentPaymentMethod = currentPaymentMethod;
     }
 
-    public String getCurrentBillingAddress() {
+    public Address getCurrentBillingAddress() {
         return currentBillingAddress;
     }
 
-    public void setCurrentBillingAddress(String currentBillingAddress) {
+    public void setCurrentBillingAddress(Address currentBillingAddress) {
         this.currentBillingAddress = currentBillingAddress;
     }
 

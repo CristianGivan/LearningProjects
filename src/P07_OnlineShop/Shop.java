@@ -3,14 +3,41 @@ package P07_OnlineShop;
 import P07_OnlineShop.Exceptions.*;
 
 import java.util.Scanner;
+import java.util.SortedMap;
 
 public class Shop {
 
     public static void main(String[] args) {
         Menu menu = new Menu();
+        //test(init());
         toDOInMenu(menu, 1, init());
+    }
 
+    public static void test(ShoppingAccount account) {
+        Card card;
+        DebitCard debitCard;
+        CreditCard creditCard;
+        int select;
+        do {
+            System.out.println("\n Select the card:");
+            select = numberTypedByUser();
+            card = account.getCardList()[select];
+            //debitCard = (DebitCard) card;
+            //creditCard = (CreditCard) card;
+            //debug
+            if (card instanceof DebitCard) {
+                System.out.println("is a debit card");
+                debitCard = (DebitCard) card;
+            }
+            if (card instanceof CreditCard) {
+                System.out.println("is a credit card");
+                creditCard = (CreditCard) card;
+            }
+            if (card instanceof Card) {
+                System.out.println("is a Card");
+            }
 
+        } while (select != 0);
     }
 
     public static void toDOInMenu(Menu menu, int menuNumber, ShoppingAccount account) {
@@ -20,8 +47,6 @@ public class Shop {
         boolean isMenuChanged = false;
         String[] menuList = new String[0];
         Card card = new Card(true, 1111, 12344321, "Popescu Ioan", 1000);
-
-
         do {
             if (!redoAction) {
                 switch (menuNumber) {
@@ -50,13 +75,11 @@ public class Shop {
                     System.out.println("error");
                     break;
             }
-
             previousChose = choice;
             System.out.println("\nType " + previousChose + " to redo the action" +
                     ", type 0 to exit from current manu" +
                     " or type any other number to return to the manu!\n");
             choice = numberTypedByUser();
-
             if (choice == 0 & menuNumber != 0) {
                 choice = -1;
                 menuNumber = 1;
@@ -69,28 +92,24 @@ public class Shop {
                     redoAction = false;
                 }
             }
-
         } while (choice != 0);
     }
 
+    // login meniu
     public static void choseInMainMenu(Menu menu, int choice, ShoppingAccount account) {
         String[] menuList = menu.getMainMenu();
 
         switch (choice) {
             case 0:
                 System.out.println("You choice to exit, bye!");
-
                 break;
             case 1:
                 System.out.println("You chose to " + menuList[1] + "\n");
                 toDOInMenu(menu, 2, account);
-
                 break;
-
             default:
                 System.out.println("Unexpected chose, please try again from 0 to " +
                         (menu.getMainMenu().length - 1) + " or type 0 to exit");
-
                 break;
         }
     }
@@ -114,7 +133,8 @@ public class Shop {
                 break;
             case 3:
                 //pay
-                pay(menu, account);
+                System.out.println("You chose to " + menuList[3] + "\n");
+                pay(menu, account, paymentAmount());
                 break;
             case 4:
                 // display all cards of the account
@@ -132,6 +152,27 @@ public class Shop {
                 //delete a card from card list
                 //todo test the second deletion
                 deleteTheCardByNumber(account);
+                break;
+            case 8:
+                //display the payment method
+                displayPaymentMethod(menu, account);
+                break;
+            case 9:
+                //select the payment method
+                try {
+                    selectPaymentMethod(menu, account);
+                } catch (CardNotFound e) {
+                    System.out.println(e.getMessage());
+                }
+                break;
+            case 10:
+                // generate invoice
+                generateInvoice(menu, account);
+                break;
+            case 11:
+                test(account);
+                break;
+
             default:
                 System.out.println("Unexpected chose, please try again from 0 to " +
                         (menu.getMainMenu().length - 1) + " or type 0 to exit");
@@ -139,18 +180,58 @@ public class Shop {
         }
     }
 
+    public static void generateInvoice(Menu menu, ShoppingAccount account) {
+        String[] menuList = menu.getMenu2();
+        System.out.println("You chose to " + menuList[10] + "\n");
+        int amount = paymentAmount();
+        pay(menu, account, amount);
+        System.out.println(account.generateReceipt(amount));
+    }
+
+    public static void displayPaymentMethod(Menu menu, ShoppingAccount account) {
+        String[] menuList = menu.getMenu2();
+        System.out.println("You chose to " + menuList[8] + "\n");
+        System.out.println("The current payment method is:");
+        System.out.println(account.getCurrentPaymentMethod().toString());
+    }
+
+    public static void selectPaymentMethod(Menu menu, ShoppingAccount account) throws CardNotFound {
+        Card card;
+        String[] menuList = menu.getMenu2();
+        System.out.println("You chose to " + menuList[8] + "\n");
+        account.selectPaymentMethod(findIndexOfCardByNumber(account));
+        System.out.println("The payment method was change the current payment method is:");
+        System.out.println(account.getCurrentPaymentMethod().toString());
+
+        //todo 2 sau nu
+        /*
+        try {
+            account.selectPaymentMethod(findIndexOfCardByNumber(account));
+            System.out.println("The payment method was change the current payment method is:");
+            System.out.println(account.getCurrentPaymentMethod().toString());
+        } catch (CardNotFound e) {
+            //todo am facut bine ca am si tratat err dar am si dat-o mai departe
+            //ar trebui sa sterg de aici try catch
+            throw new CardNotFound("The card wasn't found!");
+        }*/
+    }
+
     public static void freezeCard(Menu menu, ShoppingAccount account) {
         String[] menuList = menu.getMenu2();
         Card card;
         System.out.println("You chose to " + menuList[2] + "\n");
-        card = selectCardByNumber(account);
-        if (cardIsVerifiedSuccessful(card)) {
-            try {
-                card.freezeCard();
-                System.out.println("the card is now inactive");
-            } catch (CardInactive e) {
-                System.out.println(e.getMessage());
+        try {
+            card = selectCardByNumber(account);
+            if (cardIsVerifiedSuccessful(card)) {
+                try {
+                    card.freezeCard();
+                    System.out.println("the card is now inactive");
+                } catch (CardInactive e) {
+                    System.out.println(e.getMessage());
+                }
             }
+        } catch (CardNotFound e) {
+            System.out.println("The card wasn't found!");
         }
     }
 
@@ -160,98 +241,126 @@ public class Shop {
         Card card;
         System.out.println("You chose to " + menuList[1] + "\n");
         int newPin;
-        card = selectCardByNumber(account);
-        if (cardIsVerifiedSuccessful(card)) {
-            System.out.println("insert the new pin");
-            newPin = numberTypedByUser();
-            card.setPin(newPin);
-        } else {
-            System.out.println("You inserted the wrong pin to many times");
+        try {
+            card = selectCardByNumber(account);
+            if (cardIsVerifiedSuccessful(card)) {
+                System.out.println("insert the new pin");
+                newPin = numberTypedByUser();
+                card.setPin(newPin);
+            } else {
+                System.out.println("You inserted the wrong pin to many times");
+            }
+        } catch (CardNotFound e) {
+            System.out.println("The card wasn't found!");
         }
     }
 
-    public static void pay(Menu menu, ShoppingAccount account) {
-        String[] menuList = menu.getMenu2();
-        Card card;
-        System.out.println("You chose to " + menuList[5] + "\n");
-        //todo shopping card creation
+    public static int paymentAmount() {
         int amount;
+        System.out.println("Specify the amount:");
+        amount = numberTypedByUser();
+        return amount;
+    }
+
+    public static void pay(Menu menu, ShoppingAccount account, int amount) {
+
+        Card card;
+        CreditCard creditCard = null;
+        DebitCard debitCard = null;
         int numberOfTries = 0;
         int selected;
         int amountAdded;
-        System.out.println("Specify the amount:");
-        amount = numberTypedByUser();
-        System.out.println("Select a card from which to pay:");
-        card = selectCardByNumber(account);
-        DebitCard debitCard = (DebitCard) card;
-        CreditCard creditCard = (CreditCard) card;
-        do {
-            try {
-                //System.out.println("The amount before payment is: " + card.getCardBalance());
-                card.pay(amount);
-                System.out.println("The amount after payment is: " + card.getCardBalance());
-                numberOfTries = 0;
-            } catch (NotEnoughMoneyAvailable e) {
-                System.out.println(e.getMessage());
-                System.out.println("What do you want to do? You can: ");
-                System.out.println("Type 0 to exit\nType 1 to add money in balance and try again");
-                selected = numberTypedByUser();
-                if (selected == 0) {
-                    numberOfTries = 0;
-                    System.out.println("\nBye bye");
-                } else if (selected == 1) {
-                    System.out.println("How much do you want to add to your balance," +
-                            " you need at list " + (amount - card.getCardBalance()));
-                    amountAdded = numberTypedByUser();
-                    card.setCardBalance(card.getCardBalance() + amountAdded);
-                    numberOfTries = 1;
-                } else {
-                    numberOfTries = 0;
-                    System.out.println("\nYour selection is not valid!");
-                }
-            } catch (AmountAndOverDraftExecuted e) {
-                //for the future it can be modified to modify over drift
-                //now you can modify oly the balance
-                //noinspection DuplicatedCode
-                System.out.println(e.getMessage());
-                System.out.println("What do you want to do? You can: ");
-                System.out.println("Type 0 to exit\nType 1 to add money in balance and try again");
-                selected = numberTypedByUser();
-                if (selected == 0) {
-                    numberOfTries = 0;
-                    System.out.println("\nBye bye");
-                } else if (selected == 1) {
-                    System.out.println("How much do you want to add to your balance," +
-                            " you need at list " + (amount - creditCard.getCardBalance()));
-                    amountAdded = numberTypedByUser();
-                    creditCard.setCardBalance(creditCard.getCardBalance() + amountAdded);
-                    numberOfTries = 1;
-                } else {
-                    numberOfTries = 0;
-                    System.out.println("\nYour selection is not valid!");
-                }
-            } catch (MaximTransactionAmountExceeded e) {
-                System.out.println(e.getMessage());
-                System.out.println("What do you want to do? You can: ");
-                System.out.println("Type 0 to exit\nType 1 to increase maximum amount for a transaction and try again");
-                selected = numberTypedByUser();
-                if (selected == 0) {
-                    numberOfTries = 0;
-                    System.out.println("\nBye bye");
-                } else if (selected == 1) {
-                    //todo decide if is needed to add or to insert de maximum value
-                    System.out.println("How much do you want to increase maximum amount for a transaction," +
-                            " you need at list " + (amount - debitCard.getMaxTransactionAmount()));
-                    amountAdded = numberTypedByUser();
-                    int addMax = debitCard.getMaxTransactionAmount() + amountAdded;
-                    debitCard.setMaxTransactionAmount(addMax);
-                    numberOfTries = 1;
-                } else {
-                    numberOfTries = 0;
-                    System.out.println("\nYour selection is not valid!");
-                }
+
+        try {
+            System.out.println("Do you want to use the current payment methode or do you want to use " +
+                    "other payment method");
+            System.out.println("Type 1 to change the current payment method");
+            System.out.println("Type 2 or other number to use the current payment method");
+            selected = numberTypedByUser();
+            if (selected == 1) {
+                selectPaymentMethod(menu, account);
             }
-        } while (numberOfTries > 0);
+            card = account.getCurrentPaymentMethod();
+
+            //debug
+            if (card instanceof DebitCard) {
+                debitCard = (DebitCard) card;
+            }
+            if (card instanceof CreditCard) {
+                creditCard = (CreditCard) card;
+            }
+            do {
+                try {
+                    //System.out.println("The amount before payment is: " + card.getCardBalance());
+                    card.pay(amount);
+                    System.out.println("The amount after payment is: " + card.getCardBalance());
+                    numberOfTries = 0;
+                } catch (NotEnoughMoneyAvailable e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("What do you want to do? You can: ");
+                    System.out.println("Type 0 to exit\nType 1 to add money in balance and try again");
+                    selected = numberTypedByUser();
+                    if (selected == 0) {
+                        numberOfTries = 0;
+                        System.out.println("\nBye bye");
+                    } else if (selected == 1) {
+                        System.out.println("How much do you want to add to your balance," +
+                                " you need at list " + (amount - card.getCardBalance()));
+                        amountAdded = numberTypedByUser();
+                        card.setCardBalance(card.getCardBalance() + amountAdded);
+                        numberOfTries = 1;
+                    } else {
+                        numberOfTries = 0;
+                        System.out.println("\nYour selection is not valid!");
+                    }
+                } catch (AmountAndOverDraftExecuted e) {
+                    //for the future it can be modified to modify over drift
+                    //now you can modify oly the balance
+                    //noinspection DuplicatedCode
+                    System.out.println(e.getMessage());
+                    System.out.println("What do you want to do? You can: ");
+                    System.out.println("Type 0 to exit\nType 1 to add money in balance and try again");
+                    selected = numberTypedByUser();
+                    if (selected == 0) {
+                        numberOfTries = 0;
+                        System.out.println("\nBye bye");
+                    } else if (selected == 1) {
+                        System.out.println("How much do you want to add to your balance," +
+                                " you need at list " + (amount - creditCard.getCardBalance()));
+                        amountAdded = numberTypedByUser();
+                        creditCard.setCardBalance(creditCard.getCardBalance() + amountAdded);
+                        numberOfTries = 1;
+                    } else {
+                        numberOfTries = 0;
+                        System.out.println("\nYour selection is not valid!");
+                    }
+                } catch (MaximTransactionAmountExceeded e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("What do you want to do? You can: ");
+                    System.out.println("Type 0 to exit\nType 1 to increase maximum amount for" +
+                            " a transaction and try again");
+                    selected = numberTypedByUser();
+                    if (selected == 0) {
+                        numberOfTries = 0;
+                        System.out.println("\nBye bye");
+                    } else if (selected == 1) {
+                        //todo decide if is needed to add or to insert de maximum value
+                        System.out.println("How much do you want to increase maximum amount " +
+                                "for a transaction," + " you need at list " +
+                                (amount - debitCard.getMaxTransactionAmount()));
+                        amountAdded = numberTypedByUser();
+                        int addMax = debitCard.getMaxTransactionAmount() + amountAdded;
+                        debitCard.setMaxTransactionAmount(addMax);
+                        numberOfTries = 1;
+                    } else {
+                        numberOfTries = 0;
+                        System.out.println("\nYour selection is not valid!");
+                    }
+                }
+            } while (numberOfTries > 0);
+        } catch (CardNotFound e) {
+            System.out.println("The card wasn't found!");
+        }
     }
 
     public static void insertNewCard(ShoppingAccount account) {
@@ -281,18 +390,8 @@ public class Shop {
         }
     }
 
-    public static void deleteTheCardByNumber(ShoppingAccount account) {
-        int cardIndex = findIndexOfCardByNumber(account);
-        if (cardIndex == -1) {
-            System.out.println("The card wasen't found!");
-        } else {
-            account.deletePaymentMethod(cardIndex);
-            System.out.println("The card number " + cardIndex + " was deleted");
-        }
-    }
-
     public static CreditCard createNewCreditCard() {
-        //todo verify that the user inserted valid values
+        //todo 3 verify that the values inserted by user are valide
         long cardNumber;
         int pin;
         int balance;
@@ -319,7 +418,7 @@ public class Shop {
     }
 
     public static DebitCard createNewDebitCard() {
-        //todo verify that the user inserted valid values
+        //todo 3 verify that the user inserted valid values
         long cardNumber;
         int pin;
         int balance;
@@ -345,17 +444,29 @@ public class Shop {
         return debitCard;
     }
 
-    public static Card selectCardByNumber(ShoppingAccount account) {
-        Card card = new Card(true, 0, 0, "", 0);
-        int cardIndex = findIndexOfCardByNumber(account);
-        if (cardIndex == -1) {
-            return card;
-        } else {
-            return account.getCardList()[cardIndex];
+    public static void deleteTheCardByNumber(ShoppingAccount account) {
+        int cardIndex = 0;
+        try {
+            cardIndex = findIndexOfCardByNumber(account);
+            account.deletePaymentMethod(cardIndex);
+            System.out.println("The card number " + cardIndex + " was deleted");
+        } catch (CardNotFound e) {
+            //System.out.println(e.getMessage());
+            System.out.println("The card wasn't found!");
         }
     }
 
-    public static int findIndexOfCardByNumber(ShoppingAccount account) {
+    public static Card selectCardByNumber(ShoppingAccount account) throws CardNotFound {
+        int cardIndex = 0;
+        try {
+            cardIndex = findIndexOfCardByNumber(account);
+            return account.getCardList()[cardIndex];
+        } catch (CardNotFound e) {
+            throw new CardNotFound("The card wasn't found!");
+        }
+    }
+
+    public static int findIndexOfCardByNumber(ShoppingAccount account) throws CardNotFound {
         int numberOfTries = 3;
         int cardIndex = -1;
         long cardNumber;
@@ -373,17 +484,20 @@ public class Shop {
                 numberOfTries--;
                 if (numberOfTries == 0) {
                     System.out.println("You tries to many times, you cannot try anymore");
+                    throw new CardNotFound("Card not found");
                 } else {
-                    System.out.println("The card wasn't fond you have " + (numberOfTries)
+                    System.out.println("The card wasn't fond, you have " + (numberOfTries)
                             + " more tries.");
                     System.out.println("What do you want to do? You can: ");
                     System.out.println("Type 0 to exit\nType 1 to try again");
+                    //todo treat the values <> 0 1
+
                     if (numberTypedByUser() == 0) {
                         numberOfTries = 0;
                         System.out.println("\nBye bye");
+                        throw new CardNotFound("The card wasn't found!");
                     }
                 }
-                System.out.println("You have an error index");
             }
 
         } while (numberOfTries > 0);
@@ -476,7 +590,7 @@ public class Shop {
         cards[2] = card1;
 
         ShoppingAccount account = new ShoppingAccount(cards, addresses, "email1", "password",
-                "lastName", "firstName", card, address1.getName());
+                "Prenume", "Nume", card, address1);
         return account;
     }
 }

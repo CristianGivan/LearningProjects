@@ -26,7 +26,7 @@ public class Menu {
     }
 
     public void setMenu2() {
-        this.Menu2 = new String[8];
+        this.Menu2 = new String[11];
         this.Menu2[0] = "exit from librarian manu";
         this.Menu2[1] = "Change PIN";
         this.Menu2[2] = "frez the card";
@@ -35,6 +35,11 @@ public class Menu {
         this.Menu2[5] = "display all addresses of the account";
         this.Menu2[6] = "insert a new payment method";
         this.Menu2[7] = "delete a card from card list";
+        this.Menu2[8] = "display the payment method";
+        this.Menu2[9] = "select the payment method";
+        this.Menu2[10] = "generate invoice";
+
+        //add array length
     }
 
     public void setMenu3() {

@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d890d094-1bb8-4ea5-88f6-5f159b141a50" name="Changes" comment="working on online shop">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/P07_OnlineShop/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P07_OnlineShop/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P07_OnlineShop/CreditCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/CreditCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/P07_OnlineShop/Documentation/Documentation.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Documentation/Documentation.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/P07_OnlineShop/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/P07_OnlineShop/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/Shop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/P07_OnlineShop/ShoppingAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/P07_OnlineShop/ShoppingAccount.java" afterDir="false" />
@@ -25,6 +27,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2ClQtq81c940gd0BNaFyUzFVMoz" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -116,7 +121,8 @@
       <workItem from="1660061466162" duration="20000" />
       <workItem from="1660128384311" duration="21536000" />
       <workItem from="1660190396382" duration="35903000" />
-      <workItem from="1660233109458" duration="9941000" />
+      <workItem from="1660233109458" duration="10008000" />
+      <workItem from="1660273242308" duration="16299000" />
     </task>
     <task id="LOCAL-00001" summary="Algorithms added">
       <created>1659376732733</created>
@@ -216,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660233148811</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="working on online shop">
+      <created>1660245840416</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1660245840416</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,14 +285,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/P07_OnlineShop/ShoppingAccount.java</url>
-          <line>73</line>
+          <line>65</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/P07_OnlineShop/ShoppingAccount.java</url>
-          <line>49</line>
-          <option name="timeStamp" value="57" />
+          <url>file://$PROJECT_DIR$/src/P07_OnlineShop/Shop.java</url>
+          <line>366</line>
+          <option name="timeStamp" value="58" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/P07_OnlineShop/Shop.java</url>
+          <line>454</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/P07_OnlineShop/Shop.java</url>
+          <line>183</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassCastException" package="java.lang" />
+          <option name="timeStamp" value="62" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
